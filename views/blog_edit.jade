@@ -1,0 +1,12 @@
+extends ./layout.jade
+
+block content
+		div
+			form( method="post" action="/blog/edit")
+				input( type="hidden", name="_id", value=art._id.toHexString())
+				div
+					input( type="text", name="title", id="title", value=art.title)
+				div
+					textarea( name="body", rows=20, id="body")=art.body
+				div#editArticleSubmit
+					input(type="submit", value="Save")

@@ -1,0 +1,23 @@
+extends ./layout.jade
+
+block content
+
+	div.article
+		h1= art.title
+		div.created_at= art.created_at
+		div.body= art.body
+		- each comment in art.comments
+			div.comment
+				div.person= comment.person
+				div.commentText= comment.comment
+		div
+			form( method="post", action="/blog/addComment")
+				input( type="hidden", name="_id", value=art._id.toHexString())
+				div
+					span Author :
+					input( type="text", name="person", id="addCommentPerson")
+				div
+					span Comment :
+					textarea( name="comment", rows=5, id="addCommentComment")
+				div#editArticleSubmit
+					input(type="submit", value="Send")

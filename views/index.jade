@@ -1,0 +1,15 @@
+extends ./layout.jade
+
+block content
+	h1= title
+	#articles
+		- each article in articles
+			div.article
+				div.created_at= article.created_at
+				div.title 
+					a(href="/blog/"+article._id.toHexString())!= article.title
+				div.edit
+					a(href="/blog/edit/"+article._id.toHexString()) edit
+				div.body= article.body
+	div#new
+		a(href="blog/new") new article
